@@ -1,6 +1,9 @@
+import { ServerAddress } from "server-address";
 /**
  * Event listener for HTTP server "error" event.
  */
+
+const { port } = ServerAddress;
 
 export default function onError(error) {
   if (error.syscall !== "listen") {
