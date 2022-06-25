@@ -1,5 +1,7 @@
 export const settings = {
-  login: "Denis_shklyarskij",
-  password: "шеЗкщпук1994",
-  defaultPort: "3000",
+  MONGO_LOGIN: "Denis_shklyarskij",
+  MONGO_PASSWORD: "шеЗкщпук1994",
+  MONGO_HOSTNAME: 'atlascluster.vylez.mongodb.net',
+  MONGO_DB: 'test',
+  APP_PORT: "3000",
 };
