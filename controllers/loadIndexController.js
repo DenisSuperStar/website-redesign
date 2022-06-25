@@ -1,30 +1,33 @@
+import express from "express";
 import fetch from "node-fetch";
 import { Slides } from "../models/slides";
+
+const { request, response, next } = express;
+//const filter = {};
 
 export class loadIndexController {
   constructor() {}
 
-  async loadIndex(req, res, next) {
-    const target = await Slides.find({});
-    const currentLen = target.length;
+  async loadIndex(request, response, next) {
+    const url = "https://jsonplaceholder.typicode.com/comments?_limit=30";
+    const data = await fetch(url, {
+      method: "GET",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const slides = await data.json();
 
-    if (currentLen) {
-      await Slides.deleteMany({});
-    }
+    await Slides.insertMany(slides);
 
-    if (!currentLen) {
-      const url = "https://jsonplaceholder.typicode.com/comments?_limit=30";
-      const data = await fetch(url);
-      const slides = await data.json();
+    //const pages = await Slides.find(filter).exec();
 
-      Slides.insertMany(slides);
-
-      const pages = await Slides.find({});
-
-      res.render("index", {
-        title: "О компании",
-        pages: pages,
-      });
-    }
+    response.render("index", {
+      title: "О компании",
+      pages: slides,
+    });
   }
 }

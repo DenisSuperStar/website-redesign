@@ -1,30 +1,33 @@
+import express from "express";
 import fetch from "node-fetch";
 import { Terms } from "../models/terms";
+
+const { request, response, next } = express;
+//const filter = {};
 
 export class loadTermsController {
   constructor() {}
 
-  async loadTerms(req, res, next) {
-    const target = await Terms.find({});
-    const currentLen = target.length;
+  async loadTerms(request, response, next) {
+    const url = "https://jsonplaceholder.typicode.com/todos/2";
+    const data = await fetch(url, {
+      method: 'GET',
+      mode: 'cors',
+      cache: 'no-cache',
+      credentials: "same-origin",
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    });
+    const cooperationTerms = await data.json();
 
-    if (currentLen) {
-      await Terms.deleteMany({});
-    }
+    await Terms.insertMany(cooperationTerms);
 
-    if (!currentLen) {
-      const url = "https://jsonplaceholder.typicode.com/todos/2";
-      const data = await fetch(url);
-      const cooperationTerms = await data.json();
+    //const terms = await Terms.find(filter).exec();
 
-      Terms.insertMany(cooperationTerms);
-
-      const terms = await Terms.find({});
-
-      res.render("terms", {
-        title: "Усовия сотрудничества",
-        terms: terms,
-      });
-    }
+    response.render("terms", {
+      title: "Усовия сотрудничества",
+      terms: cooperationTerms,
+    });
   }
 }

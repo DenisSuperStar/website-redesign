@@ -1,30 +1,33 @@
+import express from "express";
 import fetch from "node-fetch";
 import { ServiceType } from "../models/serviceType";
+
+const { request, response, next } = express;
+//const filter = {};
 
 export class loadTypesController {
   constructor() {}
 
-  async loadTypes(req, res, next) {
-    const target = await ServiceType.find({});
-    const currentLen = target.length;
+  async loadTypes(request, response, next) {
+    const url = "https://jsonplaceholder.typicode.com/photos?_limit=30";
+    const data = await fetch(url, {
+      method: "GET",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const serviceType = await data.json();
 
-    if (currentLen) {
-      await ServiceType.deleteMany({});
-    }
+    await ServiceType.insertMany(serviceType);
 
-    if (!currentLen) {
-      const url = "https://jsonplaceholder.typicode.com/photos?_limit=30";
-      const data = await fetch(url);
-      const serviceType = await data.json();
+    //const types = await ServiceType.find(filter).exec();
 
-      ServiceType.insertMany(serviceType);
-
-      const types = await ServiceType.find({});
-
-      res.render("types", {
-        title: "Предметная область",
-        types: types,
-      });
-    }
+    response.render("types", {
+      title: "Предметная область",
+      types: serviceType,
+    });
   }
 }

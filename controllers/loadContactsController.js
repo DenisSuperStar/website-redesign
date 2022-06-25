@@ -1,30 +1,45 @@
+import express from "express";
 import fetch from "node-fetch";
 import { Contacts } from "../models/contacts";
+
+const { request, response, next } = express;
+//const filter = {};
 
 export class loadContactsController {
   constructor() {}
 
-  async loadContacts(req, res, next) {
-    const target = await Contacts.find({});
-    const currentLen = target.length;
+  async loadContacts(request, response, next) {
+    const url = "https://jsonplaceholder.typicode.com/users/1";
+    const data = await fetch(url, {
+      method: "GET",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const contactCustomer = await data.json();
 
-    if (currentLen) {
-      await Contacts.deleteMany({});
-    }
+    await Contacts.insertMany(contactCustomer);
 
-    if (!currentLen) {
-      const url = "https://jsonplaceholder.typicode.com/users/1";
-      const data = await fetch(url);
-      const contactCustomer = await data.json();
+    //const contacts = await Contacts.find(filter).exec();
+    const { id, name, username, email, phone, website, address } =
+      contactCustomer;
+    const { street, suite, city, zipcode } = address;
 
-      Contacts.insertMany(contactCustomer);
-
-      const contacts = await Contacts.find({});
-
-      res.render("contacts", {
-        title: "Связаться с нами",
-        constacts: contacts,
-      });
-    }
+    response.render("contacts", {
+      title: "Связаться с нами",
+      _id: id,
+      name: name,
+      username: username,
+      mail: email,
+      phone: phone,
+      site: website,
+      street: street,
+      suite: suite,
+      city: city,
+      zipcode: zipcode
+    });
   }
 }

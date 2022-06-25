@@ -1,30 +1,33 @@
+import express from "express";
 import fetch from "node-fetch";
 import { Services } from "../models/services";
+
+const { request, response, next } = express;
+//const filter = {};
 
 export class loadServicesController {
   constructor() {}
 
-  async loadService(req, res, next) {
-    const target = await Services.find({});
-    const currentLen = target.length;
+  async loadService(request, response, next) {
+    const url = "https://jsonplaceholder.typicode.com/posts?_limit=30";
+    const data = await fetch(url, {
+      method: "GET",
+      mode: "cors",
+      cache: "no-cache",
+      credentials: "same-origin",
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    const services = await data.json();
 
-    if (currentLen) {
-      await Services.deleteMany({});
-    }
+    await Services.insertMany(services);
 
-    if (!currentLen) {
-      const url = "https://jsonplaceholder.typicode.com/posts?_limit=30";
-      const data = await fetch(url);
-      const services = await data.json();
+    //const ourServices = await appdb.services.find(filter).exec();
 
-      Services.insertMany(services);
-
-      const ourServices = await Services.find({});
-
-      res.render("services", {
-        title: "Прайс лист компании",
-        services: ourServices,
-      });
-    }
+    response.render("services", {
+      title: "Прайс лист компании",
+      services: services,
+    });
   }
 }
