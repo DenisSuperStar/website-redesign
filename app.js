@@ -15,11 +15,16 @@ import { loadTermsController } from "./controllers/loadTermsController";
 import { loadServicesController } from "./controllers/loadServicesController";
 import { loadTypesController } from "./controllers/loadTypesController";
 import { loadIndexController } from "./controllers/loadIndexController";
+import { Slides } from "./models/slides";
+import { Services } from "./models/services";
+import { Terms } from "./models/terms";
+import { ServiceType } from "./models/serviceType";
+import { Contacts } from "./models/contacts";
 
-const { request, response, next } = express;
-const { login, password, defaultPort } = settings;
-const port = normalizePort(process.env.PORT || defaultPort);
-const url = `mongodb+srv://${login}:${password}@atlascluster.vylez.mongodb.net/test`;
+const { MONGO_LOGIN, MONGO_PASSWORD, MONGO_HOSTNAME, MONGO_DB, APP_PORT } =
+  settings;
+const port = normalizePort(process.env.PORT || APP_PORT);
+const url = `mongodb+srv://${MONGO_LOGIN}:${MONGO_PASSWORD}@${MONGO_HOSTNAME}/${MONGO_DB}`;
 const app = express();
 const server = http.createServer(app);
 
@@ -45,11 +50,11 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 
-app.get("/", loadIndex(request, response, next)); // передать как function(request, response, next) {} 
-app.get("/types", loadTypes(request, response, next));
-app.get("/services", loadService(request, response, next));
-app.get("/terms", loadTerms(request, response, next));
-app.get("/contacts", loadContacts(request, response, next));
+app.get("/", loadIndex); // передать как function(request, response, next) {}
+app.get("/types", loadTypes);
+app.get("/services", loadService);
+app.get("/terms", loadTerms);
+app.get("/contacts", loadContacts);
 
 // catch 404 and forward to error handler
 app.use(function (request, response, next) {
@@ -59,29 +64,37 @@ app.use(function (request, response, next) {
 // error handler
 app.use(function (err, request, response, next) {
   // set locals, only providing error in development
-  res.locals.message = err.message;
-  res.locals.error = req.app.get("env") === "development" ? err : {};
+  response.locals.message = err.message;
+  response.locals.error = request.app.get("env") === "development" ? err : {};
 
   // render the error page
-  res.status(err.status || 500);
-  res.render("error");
+  response.status(err.status || 500);
+  response.render("error");
 });
 
 app.set("port", port);
 
-mongoose
-  .connect(url, { useUnifiedTopology: true, useNewUrlParser: true })
-  .then(() => {
-    /**
-     * Listen on provided port, on all network interfaces.
-     */
+(async () => {
+  try {
+    mongoose.connect(url, {
+      useUnifiedTopology: true,
+      useNewUrlParser: true,
+    });
+
     server.listen(port, () => {
       console.log(`Сервер запущен на порту ${port}`);
     });
-  })
-  .catch((err) => {
-    console.log(err.stack);
-  });
 
-server.on("error", onError);
-server.on("listening", onListening);
+    server.on("error", onError);
+    server.on("listening", onListening);
+
+    await Slides.deleteMany({});
+    await Services.deleteMany({});
+    await Terms.deleteMany({});
+    await ServiceType.deleteMany({});
+    await Contacts.deleteMany({});
+  } catch (err) {
+    mongoose.disconnect();
+    console.log(createError(err));
+  }
+})();
