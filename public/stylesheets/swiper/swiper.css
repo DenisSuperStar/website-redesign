@@ -1,0 +1,30 @@
+.swiper-container {
+    width: 100%;
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.swiper-track {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 48px;
+}
+
+.swiper-first {
+    background: linear-gradient(to right, #757f9a, #d7dde8);
+}
+
+.swiper-second {
+    background: linear-gradient(to right, #134e5e, #71b280);
+}
+
+.swiper-third {
+    background: linear-gradient(to right, #5c258d, #4389a2);
+}
+
+.swiper-fourth {
+    background: linear-gradient(to right, #085078, #85d8ce);
+}
