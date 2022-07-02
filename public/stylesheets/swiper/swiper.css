@@ -1,20 +1,11 @@
 .swiper-container {
     width: 100%;
-    height: 100%;
     margin-left: auto;
     margin-right: auto;
 }
 
-.swiper-wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    font-size: 48px;
-}
-
-.swiper-slide {
-    background: linear-gradient(to right, #5c258d, #4389a2);
+.swiper-container .swiper-wrapper {
+    align-items: inherit;
 }
 
 .swiper-shape {
