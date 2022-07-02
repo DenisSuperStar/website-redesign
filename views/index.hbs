@@ -2,16 +2,16 @@
   <div class="swiper-wrapper">
     {{#each pages}}
       <div class="swiper-slide">
-        Slide
-        {{id}}
-        <h3 class="slide-title">
+        <div class="slide-info">
+          <h3 class="slide-title">
           {{name}}
-        </h3>
-        <div class="slide-subtitle">
-          {{email}}
-        </div>
-        <div class="slide-body">
-          {{body}}
+          </h3>
+          <div class="slide-subtitle">
+            {{email}}
+          </div>
+          <div class="slide-body">
+            {{body}}
+          </div>
         </div>
       </div>
     {{/each}}
