@@ -5,7 +5,7 @@
     margin-right: auto;
 }
 
-.swiper-track {
+.swiper-wrapper {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -13,18 +13,26 @@
     font-size: 48px;
 }
 
-.swiper-first {
-    background: linear-gradient(to right, #757f9a, #d7dde8);
-}
-
-.swiper-second {
-    background: linear-gradient(to right, #134e5e, #71b280);
-}
-
-.swiper-third {
+.swiper-slide {
     background: linear-gradient(to right, #5c258d, #4389a2);
 }
 
-.swiper-fourth {
-    background: linear-gradient(to right, #085078, #85d8ce);
+.swiper-shape {
+
+}
+
+.slide-title {
+
+}
+
+.slide-subtitle {
+
+}
+
+.slide-body {
+
+}
+
+.slide-pagination {
+
 }
