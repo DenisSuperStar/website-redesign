@@ -1,9 +1,20 @@
-<h1>{{title}}</h1>
-<p>Welcome to {{title}}</p>
-{{#each pages}}
-  <div>{{postId}}</div>
-  <div>{{id}}</div>
-  <div>{{name}}</div>
-  <div>{{email}}</div>
-  <div>{{body}}</div>
-{{/each}}
+<div class="swiper-container">
+  <div class="swiper-wrapper">
+    {{#each pages}}
+      <div class="swiper-slide swiper-first">
+        Slide
+        {{id}}
+        <h3 class="slide-title">
+          {{name}}
+        </h3>
+        <div class="slide-subtitle">
+          {{email}}
+        </div>
+        <div class="slide-body">
+          {{body}}
+        </div>
+      </div>
+    {{/each}}
+  </div>
+  <div class="swiper-pagination"></div>
+</div>
