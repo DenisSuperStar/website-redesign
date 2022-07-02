@@ -2,11 +2,51 @@
 <html>
   <head>
     <title>{{title}}</title>
+    <link rel="stylesheet" href="/stylesheets/menu/menu.css">
     <link rel="stylesheet" href="/dist/swiper-bundle.min.css">
     <link rel="stylesheet" href="/stylesheets/swiper/swiper.css">
   </head>
   <body>
-    {{{body}}}
+    <nav class="menu">
+      <a href="#home" class="menu-item">Главная</a>
+      <a href="#about" class="menu-item">О проекте</a>
+      <a href="#contacts" class="menu-item">Контакты</a>
+      <div class="menu-icon">
+        &#9776;
+        <nav class="submenu">
+          <a href="#home" class="submenu-item">Главная</a>
+          <a href="#about" class="submenu-item">О проекте</a>
+          <a href="#contacts" class="submenu-item">Контакты</a>
+        </nav>
+      </div>
+    </nav>
+    <article>
+      {{{body}}}
+    </article>
+    <footer class="footer">
+      <div class="footer-item">
+        <div class="text-shape"></div>
+        <div class="shape-content">
+          <div class="text-title">Юрист-на-Дону</div>
+          <div class="text-subtitle">Всегда на страже ваших интересов</div>
+        </div>
+      </div>
+      <div class="footer-item">
+        <div class="footer-title">Услуги</div>
+        <ul class="list-services">
+          <li class="list-item">Самая популярная услуга 1</li>
+          <li class="list-item">Самая популярная услуга 2</li>
+          <li class="list-item">Самая популярная услуга 3</li>
+        </ul>
+      </div>
+      <div class="footer-item">
+        <div class="footer-title">Бесплатная консультация</div>
+        <div class="call-button">
+          <span class="phone-icon"></span>
+          <span class="phone-number">+7 (951) 839-59-39</span>
+        </div>
+      </div>
+    </footer>
   </body>
   <script src="/dist/swiper-bundle.min.js"></script>
   <script src="/script/swiper.js"></script>
