@@ -2,10 +2,12 @@
 <html>
   <head>
     <title>{{title}}</title>
+    <link rel="stylesheets" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="/stylesheets/reset.css">
     <link rel="stylesheet" href="/stylesheets/menu/menu.css">
     <link rel="stylesheet" href="/dist/swiper-bundle.min.css">
     <link rel="stylesheet" href="/stylesheets/swiper/swiper.css">
+    <link rel="stylesheet" href="/stylesheets/footer/footer.css">
   </head>
   <body>
     <header class="header">
@@ -35,10 +37,13 @@
     {{{body}}}
     <footer class="footer">
       <div class="footer-item">
-        <div class="text-shape"></div>
-        <div class="shape-content">
-          <div class="text-title">Юрист-на-Дону</div>
-          <div class="text-subtitle">Всегда на страже ваших интересов</div>
+        <div class="footer-title">Юрист-на-Дону</div>
+        <div class="footer-subtitle">Подписаться</div>
+        <div class="social-icons">
+          <a href="#twitter" class="social-item twitter"></a>
+          <a href="#vk" class="social-item vk"></a>
+          <a href="#inst" class="social-item inst"></a>
+          <a href="#linked" class="social-item linked"></a>
         </div>
       </div>
       <div class="footer-item">
@@ -51,10 +56,10 @@
       </div>
       <div class="footer-item">
         <div class="footer-title">Бесплатная консультация</div>
-        <div class="call-button">
-          <span class="phone-icon"></span>
-          <span class="phone-number">+7 (951) 839-59-39</span>
-        </div>
+        <button class="submit-apply">
+          <img src="../images/phone-ring.png" class="submit-apply-icon">
+          <span class="submit-apply-number">+7 (951) 839-59-39</span>
+        </button>
       </div>
     </footer>
   </body>
