@@ -8,9 +8,12 @@ html {
   background: #fff;
 }
 body {
+  display: flex;
+  flex-direction: column;
   line-height: 1;
-    color: #000;
-    background: #fff;
+  color: #000;
+  background: #fff;
+  min-height: 140vh;
 }
 
 a {
