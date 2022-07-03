@@ -88,11 +88,6 @@ app.set("port", port);
     server.on("error", onError);
     server.on("listening", onListening);
 
-    await Slides.deleteMany({});
-    await Services.deleteMany({});
-    await Terms.deleteMany({});
-    await ServiceType.deleteMany({});
-    await Contacts.deleteMany({});
   } catch (err) {
     mongoose.disconnect();
     console.log(createError(err));
