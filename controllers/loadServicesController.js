@@ -9,6 +9,8 @@ export class loadServicesController {
   constructor() {}
 
   async loadService(request, response, next) {
+    await Services.deleteMany({});
+
     const url = "https://jsonplaceholder.typicode.com/posts?_limit=30";
     const data = await fetch(url, {
       method: "GET",

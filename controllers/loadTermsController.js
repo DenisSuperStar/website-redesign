@@ -9,6 +9,8 @@ export class loadTermsController {
   constructor() {}
 
   async loadTerms(request, response, next) {
+    await Terms.deleteMany({});
+
     const url = "https://jsonplaceholder.typicode.com/todos/2";
     const data = await fetch(url, {
       method: 'GET',

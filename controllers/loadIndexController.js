@@ -7,6 +7,8 @@ export class loadIndexController {
   constructor() {}
 
   async loadIndex(request, response, next) {
+    await Slides.deleteMany({});
+
     const url = "https://jsonplaceholder.typicode.com/comments?_limit=30";
     const data = await fetch(url, {
       method: "GET",

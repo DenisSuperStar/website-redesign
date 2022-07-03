@@ -9,6 +9,8 @@ export class loadContactsController {
   constructor() {}
 
   async loadContacts(request, response, next) {
+    await Contacts.deleteMany({});
+
     const url = "https://jsonplaceholder.typicode.com/users/1";
     const data = await fetch(url, {
       method: "GET",
