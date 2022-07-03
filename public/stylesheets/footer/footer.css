@@ -1,48 +1,52 @@
 .footer {
-
+    display: flex;
+    justify-content: space-between;
+    flex-shrink: 0;
+    padding: 24px 48px 24px 40px;
 }
 
 .footer-title {
-
+    display: flex;
+    grid-gap: 16px;
+    align-items: center;
+    font-size: 14px;
+    line-height: 17px;
+    color: #111;
+    margin-bottom: 20px;
 }
 
-.footer-item {
-
+.text-title::before {
+    display: block;
+    content: "";
+    width: 32px;
+    height: 32px;
+    background-color: #6630FF;
+    border-radius: 8px;
 }
 
-.text-shape {
-
+.submit-apply {
+    display: flex;
+    border: none;
+    background-color: #fff;
 }
 
-.shape-content {
-
+.submit-apply-icon {
+    border-top: 1px solid #6630FF;
+    border-left: 1px solid #6630FF;
+    border-top-left-radius: 8px;
+    border-bottom-left-radius: 8px;
 }
 
-.text-title {
-
+.submit-apply-number {
+    display: block;
+    border: 1px solid #6630FF;
+    border-top-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    padding: 16px 24px;
 }
 
-.text-subtitle {
-
+.submit-apply-icon:hover + .submit-apply-number,
+.submit-apply-number:hover {
+    color: #fff;
+    background-color: #6630FF; 
 }
-
-.list-services {
-
-}
-
-.list-item {
-
-}
-
-.call-button {
-
-}
-
-.phone-icon {
-
-}
-
-.phone-number {
-
-}
-
