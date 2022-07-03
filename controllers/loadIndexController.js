@@ -1,9 +1,7 @@
-import express from "express";
 import fetch from "node-fetch";
 import { Slides } from "../models/slides";
 
-const { request, response, next } = express;
-//const filter = {};
+const filter = {};
 
 export class loadIndexController {
   constructor() {}
@@ -23,11 +21,11 @@ export class loadIndexController {
 
     await Slides.insertMany(slides);
 
-    //const pages = await Slides.find(filter).exec();
+    const pages = await Slides.find(filter).exec();
 
     response.render("index", {
       title: "О компании",
-      pages: slides,
+      pages: pages,
     });
   }
 }
