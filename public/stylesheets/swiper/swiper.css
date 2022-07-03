@@ -1,5 +1,6 @@
 .swiper-container {
     width: 100%;
+    flex: 1;
     margin-left: auto;
     margin-right: auto;
 }
@@ -31,17 +32,6 @@
 .slide-info {
     position: absolute;
     text-align: center;
-}
-
-.slide-shape {
-    position: absolute;
-    display: inline-block;
-    top: 160px;
-    left: 320px;
-    width: 150px;
-    height: 150px;
-    border-radius: 8px;
-    background-color: #6630FF;
 }
 
 .slide-title {
@@ -95,12 +85,12 @@
 
 @media all and (min-width: 1200px) {
     .slide-info {
-        padding: 240px 240px 480px 240px;
+        padding: 240px 240px 400px 240px;
     }
 }
 
 @media all and (min-width: 1440px) {
     .slide-info {
-        padding: 240px 480px 480px 420px;
+        padding: 240px 480px 400px 420px;
     }
 }
