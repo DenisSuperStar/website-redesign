@@ -12,7 +12,6 @@ const swiper = new Swiper(".swiper-container", {
     prevEl: ".swiper-button-prev",
   },
   loop: true,
-  loopedSlides: 30,
   breakpoints: {
     320: {
       slidesPerView: 2,
