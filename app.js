@@ -5,6 +5,7 @@ import cookieParser from "cookie-parser";
 import morgan from "morgan";
 import mongoose from "mongoose";
 import http from "http";
+import hbs from "hbs";
 import normalizePort from "./config/normalizePort";
 import onError from "./config/onError";
 import onListening from "./config/onListening";
@@ -15,11 +16,6 @@ import { loadTermsController } from "./controllers/loadTermsController";
 import { loadServicesController } from "./controllers/loadServicesController";
 import { loadTypesController } from "./controllers/loadTypesController";
 import { loadIndexController } from "./controllers/loadIndexController";
-import { Slides } from "./models/slides";
-import { Services } from "./models/services";
-import { Terms } from "./models/terms";
-import { ServiceType } from "./models/serviceType";
-import { Contacts } from "./models/contacts";
 
 const { MONGO_LOGIN, MONGO_PASSWORD, MONGO_HOSTNAME, MONGO_DB, APP_PORT } =
   settings;
@@ -49,6 +45,8 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+
+hbs.registerPartials(__dirname + '/views/partials');
 
 app.get("/", loadIndex); // передать как function(request, response, next) {}
 app.get("/types", loadTypes);
