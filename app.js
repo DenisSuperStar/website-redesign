@@ -48,7 +48,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 hbs.registerPartials(__dirname + '/views/partials');
 
-app.get("/", loadIndex); // передать как function(request, response, next) {}
+app.get("/", loadIndex);
 app.get("/types", loadTypes);
 app.get("/services", loadService);
 app.get("/terms", loadTerms);

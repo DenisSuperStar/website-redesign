@@ -12,41 +12,102 @@
     font-size: 14px;
     line-height: 17px;
     color: #111;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
 }
 
-.text-title::before {
+.footer-title.active::before {
     display: block;
     content: "";
-    width: 32px;
-    height: 32px;
+    width: 60px;
+        height: 60px;
     background-color: #6630FF;
     border-radius: 8px;
 }
 
-.submit-apply {
+.footer-subtitle {
+    font-size: 14px;
+    line-height: 17px;
+    color: #404045;
+    margin-bottom: 40px;
+}
+
+.social-title {
+    font-size: 18px;
+    line-height: 22px;
+    color: #111;
+    margin-bottom: 34px;
+}
+
+.social-icons {
     display: flex;
-    border: none;
-    background-color: #fff;
+    align-items: center;
+    grid-gap: 27px;
 }
 
-.submit-apply-icon {
-    border-top: 1px solid #6630FF;
-    border-left: 1px solid #6630FF;
-    border-top-left-radius: 8px;
-    border-bottom-left-radius: 8px;
+.service-item:not(:last-child)>.service-underline {
+    margin-bottom: 10px;
 }
 
-.submit-apply-number {
-    display: block;
+.service-link {
+    font-size: 14px;
+    line-height: 17px;
+    color: #6630FF;
+    margin-bottom: 5px;
+}
+
+.service-underline {
+    width: 100%;
+    height: 1px;
+    background-color: #6630FF;
+}
+
+.button-group {
+    display: flex;
+    grid-gap: 10px;
+}
+
+.button {
+    display: flex;
+    align-items: center;
+    grid-gap: 10px;
     border: 1px solid #6630FF;
-    border-top-right-radius: 8px;
-    border-bottom-right-radius: 8px;
-    padding: 16px 24px;
+    border-radius: 8px;
 }
 
-.submit-apply-icon:hover + .submit-apply-number,
-.submit-apply-number:hover {
-    color: #fff;
+.button-container {
+    position: relative;
+}
+
+.button-overlay {
+    width: 38px;
+    height: 38px;
+    background-color: #6630FF;
+    border-top-left-radius: 7px;
+    border-bottom-left-radius: 7px;
+}
+
+.button-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    padding: 10px;
+}
+
+.button-content {
+    width: 160px;
+    font-size: 12px;
+    line-height: 15px;
+    color: #404045;
+}
+
+.submit {
+    display: block;
+    width: 122px;
+    height: 38px;
+    border: none;
     background-color: #6630FF; 
+    color: #fff;
+    border-radius: 8px;
 }
