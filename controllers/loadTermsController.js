@@ -28,7 +28,7 @@ export class loadTermsController {
     //const terms = await Terms.find(filter).exec();
 
     response.render("terms", {
-      title: "Усовия сотрудничества",
+      title: "Условия сотрудничества",
       terms: cooperationTerms,
     });
   }
