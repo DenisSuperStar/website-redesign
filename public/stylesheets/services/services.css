@@ -1,8 +1,20 @@
+.layout {
+    padding: 269px 0 233px;
+    margin: 0 auto;
+}
+
+.layout-title {
+    font-size: 32px;
+    line-height: 40px;
+    color: #000;
+    margin-bottom: 20px;
+}
+
 .layout-container {
     display: flex;
     max-width: 1016px;
-    margin: 0 auto;
     flex-wrap: wrap;
+    grid-gap: 20px;
 }
 
 .layout-item {
@@ -11,10 +23,30 @@
     align-items: center;
     width: calc((100% - 20px * 4) /4);
     height: 159px;
-    margin-right: 20px;
-    outline: 1px solid red; 
+    background-color: #6630ff;
+    border-radius: 8px;
+    color: #fff;
+    padding: 30px;
 }
 
-.layout-item:nth-child(4n) {
-    margin-right: 0;
+.layout-card {
+    width: 100%;
+    text-align: center;
+}
+
+.card-title {
+    font-size: 16px;
+    line-height: 20px;
+    color: #fff;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.card-subtitle {
+    font-size: 14px;
+    line-height: 17px;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
 }
