@@ -10,58 +10,9 @@
     <link rel="stylesheet" href="/stylesheets/footer/footer.css">
   </head>
   <body>
-    <header class="header">
-      <nav class="menu">
-        <a href="#" class="menu-item">Юрист-на-Дону</a>
-        <a href="#home" class="menu-item">Главная</a>
-        <a href="#about" class="menu-item">О проекте</a>
-        <a href="#contacts" class="menu-item">Контакты</a>
-        <a href="#phone" class="menu-item">+7 (951) 839-59-39</a>
-      </nav>
-      <!-- <ul class="menu-burger">&#9776;
-        <li class="burger-item">
-          <a href="#home" class="item-link">Главная</a>
-        </li>
-        <li class="burger-item">
-          <a href="#about" class="item-link">О проекте</a>
-        </li>
-        <li class="burger-item">
-          <a href="#contacts" class="item-link">Контакты</a>
-        </li>
-        <li class="burger-item">
-          <a href="#" class="item-link">+ 7 (951) 839-59-39</a>
-        </li>
-      </ul> -->
-    </header>
-   
+    {{> header }}
     {{{body}}}
-    <footer class="footer">
-      <div class="footer-item">
-        <div class="footer-title">Юрист-на-Дону</div>
-        <div class="footer-subtitle">Подписаться</div>
-        <div class="social-icons">
-          <a href="#twitter" class="social-item twitter"></a>
-          <a href="#vk" class="social-item vk"></a>
-          <a href="#inst" class="social-item inst"></a>
-          <a href="#linked" class="social-item linked"></a>
-        </div>
-      </div>
-      <div class="footer-item">
-        <div class="footer-title">Услуги</div>
-        <ul class="list-services">
-          <li class="list-item">Самая популярная услуга 1</li>
-          <li class="list-item">Самая популярная услуга 2</li>
-          <li class="list-item">Самая популярная услуга 3</li>
-        </ul>
-      </div>
-      <div class="footer-item">
-        <div class="footer-title">Бесплатная консультация</div>
-        <button class="submit-apply">
-          <img src="../images/phone-ring.png" class="submit-apply-icon">
-          <span class="submit-apply-number">+7 (951) 839-59-39</span>
-        </button>
-      </div>
-    </footer>
+    {{> footer }}
   </body>
   <script src="/dist/swiper-bundle.min.js"></script>
   <script src="/scripts/swiper/swiper.js"></script>
